@@ -5,6 +5,14 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
+# Name of the key pair for SSH access
+variable "keypair_name" {
+  description = "The name of the key pair to use for SSH access"
+  type        = string
+  default     = "terraform-key-us-east-1"
+}
+
+########################################## EC2-instance Variables ##########################################
 # EC2 instance type to launch
 variable "instance_type" {
   description = "The type of EC2 instance to launch"
@@ -12,14 +20,27 @@ variable "instance_type" {
   default     = "t2.micro"
   sensitive   = true
 }
-
-# Name of the key pair for SSH access
-variable "keypair_name" {
-  description = "The name of the key pair to use for SSH access"
+variable "tf-ec2-name" {
+  description = "The name of the EC2 instance"
   type        = string
-  default     = "terraform-key"
+  default     = "terraform-ec2-instance"
 }
 
+##########################################EBS volume size for the EC2 instance ##########################################
+variable "ebs_volume_size" {
+  description = "Size of the EBS volume in GB for the EC2 instance"
+  type        = number
+  default     = 20
+}
+
+variable "ebs_volume_type" {
+  description = "Type of the EBS volume for the EC2 instance"
+  type        = string
+  default     = "gp2" # General Purpose SSD (gp2) or gp3
+  
+}
+
+########################################## Security Group Variables ##########################################
 # Name of the security group to be created
 variable "sg_name" {
   description = "The name of the security group"

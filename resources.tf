@@ -33,3 +33,18 @@ resource "aws_security_group" "terraform_sg" {
     Name = var.sg_name
   }
 }
+
+resource "aws_instance" "tf_ubuntu_ec2" {
+  ami                    = data.aws_ami.ubuntu_linux.id
+  instance_type          = var.instance_type
+  key_name               = var.keypair_name
+  vpc_security_group_ids = [aws_security_group.terraform_sg.id]
+
+ root_block_device {
+    volume_size = var.ebs_volume_size
+    volume_type = var.ebs_volume_type
+  }
+  tags = {
+    Name = var.tf-ec2-name
+  }
+}
