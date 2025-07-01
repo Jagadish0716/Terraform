@@ -1,3 +1,6 @@
+# Author: Jagadish V
+# Purpose: Define all input variables for EC2, EBS, and Security Group configuration
+
 # AWS region where resources will be deployed
 variable "aws_region" {
   description = "The AWS region to deploy resources in"
@@ -41,6 +44,7 @@ variable "ebs_volume_type" {
 }
 
 ########################################## Security Group Variables ##########################################
+# You can attach up to 5 security groups to a single EC2 instance in most AWS regions by default.
 # Name of the security group to be created
 variable "sg_name" {
   description = "The name of the security group"
@@ -81,4 +85,23 @@ variable "sg_ingress_protocol" {
   description = "Protocol for ingress"
   type        = string
   default     = "tcp"
+}
+
+#EC2 instance type List
+variable "ec2_instance_type_list" {
+  description = "List of EC2 instance types to be used in the map"
+  type        = list(string)
+  default     = ["t2.micro", "t2.small", "t2.medium"] 
+}
+
+#EC2 instance type Map
+variable "ec2_instance_type_map" {
+  description = "Map of EC2 instance types with their descriptions"
+  type        = map(string)
+  default     = {
+  "dev" = "t2.micro",
+  "test" = "t2.small",
+  "prod" = "t2.medium"
+  }
+  
 }

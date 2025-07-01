@@ -1,3 +1,6 @@
+# Author: Jagadish V
+# Purpose: Define data sources to fetch dynamic information from AWS, such as the latest AMI
+
 data "aws_ami" "ubuntu_linux" {
     most_recent = true
     owners      = ["099720109477"] # Canonical
