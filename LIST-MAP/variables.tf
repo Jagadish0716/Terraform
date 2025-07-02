@@ -105,3 +105,9 @@ variable "ec2_instance_type_map" {
   }
   
 }
+
+variable "ec2_az" {
+  description = "The availability zone to launch the EC2 instance in"
+  type        = string
+  default     = "us-east-1a" # Set a default value or override via tfvars
+}

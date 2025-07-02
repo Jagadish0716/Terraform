@@ -36,12 +36,17 @@ resource "aws_security_group" "terraform_sg" {
 resource "aws_instance" "tf_ubuntu_ec2" {
   ami                    = data.aws_ami.ubuntu_linux.id
   instance_type          = var.ec2_instance_type_list[0]  # Using the first instance type from the list
-  # instance_type          = var.ec2_instance_type_map["dev"] # Using the first instance type from the map 
   key_name               = var.keypair_name
   vpc_security_group_ids = [aws_security_group.terraform_sg.id]
-  count = 3 # Creating 3 instances for demonstration
+  count                  = 3 # Creating 3 instances for demonstration
 
- root_block_device {
+# create each instnace in a different availability zone
+ availability_zone      = data.aws_availability_zones.available.names[count.index]
+
+# create each instnace in a specific availability zone
+  # availability_zone = var.ec2_az
+
+  root_block_device {
     volume_size = var.ebs_volume_size
     volume_type = var.ebs_volume_type
   }
@@ -49,3 +54,9 @@ resource "aws_instance" "tf_ubuntu_ec2" {
     Name = "${var.tf-ec2-name}-${count.index + 1}" # Unique name for each instance
   }
 }
+
+data "aws_availability_zones" "available" {
+  state = "available"
+}
+
+

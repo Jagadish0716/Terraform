@@ -48,41 +48,43 @@ output "for_loop_list-ec2_instance_details" {
 
 
 ########## latest splat operator ##########
-# output "splat-ec2_instance_name" {
-#   description = "Name of the EC2 instance created using splat operator"
-#   value       = aws_instance.tf_ubuntu_ec2[*].tags["Name"]
-# }
+/*output "splat-ec2_instance_name" {
+  description = "Name of the EC2 instance created using splat operator"
+  value       = aws_instance.tf_ubuntu_ec2[*].tags["Name"]
+}
 
-# output "splat-ec2_instance_public_ip" {
-#   description = "Public IP of the EC2 instance created using splat operator"
-#   value       = aws_instance.tf_ubuntu_ec2[*].public_ip 
-# }
+output "splat-ec2_instance_public_ip" {
+  description = "Public IP of the EC2 instance created using splat operator"
+  value       = aws_instance.tf_ubuntu_ec2[*].public_ip 
+}
 
-# output "splat-ec2_instance_private_ip" {
-#   description = "Public IP of the EC2 instance created using splat operator"
-#   value       = aws_instance.tf_ubuntu_ec2[*].private_ip 
-# }
+output "splat-ec2_instance_private_ip" {
+  description = "Public IP of the EC2 instance created using splat operator"
+  value       = aws_instance.tf_ubuntu_ec2[*].private_ip 
+}
 
-# output "splat-ec2_instance_public_dns" {
-#   description = "Public DNS of the EC2 instance created using splat operator"
-#   value       = aws_instance.tf_ubuntu_ec2[*].public_dns 
-# }
+output "splat-ec2_instance_public_dns" {
+  description = "Public DNS of the EC2 instance created using splat operator"
+  value       = aws_instance.tf_ubuntu_ec2[*].public_dns 
+}
 
-# output "splat-ec2_instance_private_dns" {
-#   description = "Private DNS of the EC2 instance created using splat operator"
-#   value       = aws_instance.tf_ubuntu_ec2[*].private_dns 
-# }  
+output "splat-ec2_instance_private_dns" {
+  description = "Private DNS of the EC2 instance created using splat operator"
+  value       = aws_instance.tf_ubuntu_ec2[*].private_dns 
+} 
+*/ 
 
 # It provides all key details (name, public/private IP, DNS) for each instance in a single, structured output
 output "splat-ec2_instance_details" {
-    description = "Map of EC2 instance names to their public and private IPs using splat operator"
-    value = {
-        for idx, name in aws_instance.tf_ubuntu_ec2[*].tags["Name"] :
-            name => {
-                public_ip   = aws_instance.tf_ubuntu_ec2[idx].public_ip
-                private_ip  = aws_instance.tf_ubuntu_ec2[idx].private_ip
-                public_dns  = aws_instance.tf_ubuntu_ec2[idx].public_dns
-                private_dns = aws_instance.tf_ubuntu_ec2[idx].private_dns
-            }
-    }
+  description = "Map of EC2 instance names to their public and private IPs and AZ using splat operator"
+  value = {
+    for idx, name in aws_instance.tf_ubuntu_ec2[*].tags["Name"] :
+      name => {
+        public_ip   = aws_instance.tf_ubuntu_ec2[idx].public_ip
+        private_ip  = aws_instance.tf_ubuntu_ec2[idx].private_ip
+        public_dns  = aws_instance.tf_ubuntu_ec2[idx].public_dns
+        private_dns = aws_instance.tf_ubuntu_ec2[idx].private_dns
+        availability_zone = aws_instance.tf_ubuntu_ec2[idx].availability_zone
+      }
+  }
 }
