@@ -1,0 +1,26 @@
+# How to set AWS key file permissions (chmod 400 equivalent) on Windows using PowerShell
+
+# 1. Open PowerShell and type:
+whoami
+# This will display your current username. Copy it for the next step.
+
+# 2. Replace <username> below with your actual username.
+
+# 3. Set the path to your .pem file:
+$path = "E:\path\to\1.pem"
+
+# 4. Remove all existing permissions except for your user:
+$acl = Get-Acl $path
+$acl.SetAccessRuleProtection($true, $false) # Disable inheritance
+
+# Remove all existing access rules
+$acl.Access | ForEach-Object { $acl.RemoveAccessRule($_) }
+
+# 5. Add read-only permission for your user:
+$rule = New-Object System.Security.AccessControl.FileSystemAccessRule("<username>", "Read", "Allow")
+$acl.AddAccessRule($rule)
+
+# 6. Apply the new permissions:
+Set-Acl $path $acl
+
+
