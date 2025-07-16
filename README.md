@@ -42,7 +42,7 @@ This repository demonstrates best practices for automating AWS infrastructure us
 
 3. **Clone the Repository:**  
    ```sh
-   git clone https://github.com/your-username/your-repo.git
+   git clone https://github.com/Jagadish0716/Terraform.git
    cd your-repo
    ```
 
