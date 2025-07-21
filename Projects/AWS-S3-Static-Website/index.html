@@ -10,13 +10,28 @@
     h1 { color: #0073e6; }
     p { font-size: 1.2em; }
     .footer { margin-top: 40px; font-size: 0.9em; color: #888; }
+    .linkedin-link {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #0077b5;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .linkedin-link:hover {
+      background-color: #005983;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Welcome to My S3 Static Website!</h1>
     <p>This page is hosted on <strong>Amazon S3</strong> using Terraform.</p>
-    <!-- <p>Edit <code>index.html</code> to customize your site.</p> -->
+    <a class="linkedin-link" href="https://www.linkedin.com/in/jagadish-v-1a4778218?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B2aDxKm4zROyQ4Mx%2BoW2qMA%3D%3D" target="_blank">
+      Visit My LinkedIn
+    </a>
     <div class="footer">
       &copy; 2025 Jagadish V &mdash; Powered by AWS & Terraform
     </div>
