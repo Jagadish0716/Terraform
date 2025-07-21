@@ -6,7 +6,7 @@ This project shows how to **host a static website on AWS S3** using **Terraform*
 
 ## 🚀 Project Overview
 
-We use **Terraform** (Infrastructure as Code tool) to automatically create and configure:
+I'm using **Terraform** (Infrastructure as Code tool) to automatically create and configure:
 - An **AWS S3 bucket**
 - Static website hosting settings
 - Public access policies
@@ -14,12 +14,6 @@ We use **Terraform** (Infrastructure as Code tool) to automatically create and c
 - Outputs the final website URL
 
 > ✅ Great for personal websites, portfolios, blogs, or any static HTML pages!
-
----
-
-## 📸 Sample Architecture Diagram
-
-![S3 Website Hosting Diagram](https://docs.aws.amazon.com/AmazonS3/latest/userguide/images/static-website-hosting-diagram.png)
 
 ---
 
@@ -39,8 +33,8 @@ Before you begin, make sure you have:
 ### 1️⃣ Clone or Download This Repository
 
 ```bash
-git clone https://github.com/your-username/terraform-s3-static-website.git
-cd terraform-s3-static-website
+git clone https://github.com/Jagadish0716/Terraform.git
+cd Terraform/Projects/terraform-s3-static-website
 ```
 
 ---
@@ -121,23 +115,3 @@ terraform-s3-static-website/
 ├── index.html
 └── error.html
 ```
-
----
-
-## 📘 Additional Notes
-
-- Make sure your bucket name is **globally unique**.
-- S3 static websites don’t support HTTPS directly (unless used with CloudFront).
-- Bucket policies and public access settings are crucial — without them, your site won’t be visible.
-
----
-
-## 🙌 Credits
-
-This project is a simplified and improved version of traditional Terraform S3 hosting setups. Inspired by AWS docs and Terraform best practices.
-
----
-
-## 📧 Contact
-
-Have questions or need help? Feel free to reach out!
