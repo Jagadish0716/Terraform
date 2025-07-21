@@ -91,9 +91,9 @@ terraform apply -auto-approve
 ## 🌍 Access Your Website
 
 Copy the output URL (something like `http://your-bucket-name.s3-website-ap-south-1.amazonaws.com`) and open it in your browser. Your static site is live!
-
----
 ![Website Output Screenshot](Output.PNG)
+---
+
 
 ## 🧹 To Clean Up (Optional)
 
