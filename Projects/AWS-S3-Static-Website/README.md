@@ -95,7 +95,7 @@ Copy the output URL (something like `http://your-bucket-name.s3-website-ap-south
 ---
 
 
-## 🧹 To Clean Up (Optional)
+## 🧹 To Clean Up
 
 If you want to delete everything created by Terraform:
 
